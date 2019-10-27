@@ -1,135 +1,165 @@
 # MongoDB - Driver with Node.JS
 
-install mongodb
+1. install mongodb
 
-Download MongoDB for server - Unzip
+2. Download MongoDB for server - Unzip
 
-sudo mv '/Users/../Downloads/monogodb-osx-x86_64-4.0.3' /usr/local/mongodb
+3. Move Location
 
-open /usr/local/mongodb
+      sudo mv '/Users/../Downloads/monogodb-osx-x86_64-4.0.3' /usr/local/mongodb
 
-cd ~
+4. Create Bash Profile File For Running MongoDB in Terminal
 
-pwd
+      open /usr/local/mongodb
 
-touch .bash_profile
+      cd ~
 
-ls -a
+      pwd
 
-open .
+      touch .bash_profile
 
-vim .bash_profile
-<i key>
-export PATH=$PATH:/usr/local/mongodb/bin
-<escape key>
-:wq!
+      ls -a
 
-mkdir -p /data/db
+      open .
 
-open /data/db
+5. Use VIM to edit .bash_profile file
 
-whoami
-	<username>
+      vim .bash_profile
+      <Press i key>
+      export PATH=$PATH:/usr/local/mongodb/bin
+      <escape key>
+      :wq!
 
-sudo chown <username> /data/db
+6. Create DB Folder
 
-Quit Terminal and reopen to get installed mongo db accesible on the terminal
+      mkdir -p /data/db
 
+      open /data/db
 
-mongo --version
+      whoami
+	       <username>
 
+      sudo chown <username> /data/db
 
-Using
-
-mongod
-	db ready and starts listening on port 27017
-
-<Open new tab>
-mongo
-	This open mongo shell
-> help
-> show dbs
-> use shopDB
-> db
-	shopDB
-
-MongoDB CRUD Operations
-
-db.products.insertOne({_id:1, name:"Pen", price:1.20})
-
-show collections
-
-db.products.find()
-
-db.products.find({_id:1},{name:1})
-
-db.products.find({_id:1},{name: 1, _id: 0})
-
-db.products.updateOne({_id:1}, {$set:{stock:32}})
-
-db.products.deleteOne({_id:2})
+7. Quit Terminal and reopen to get installed mongo db accesible on the terminal
 
 
-Relationship
+      mongo --version
 
 
-db.products.insert(
-{  
-   _id:3,
-   name:"Rubber",
-   price:1.30,
-   stock:43,
-   reviews:[  
-      {  
-         authorName:"Sally",
-         rating:5,
-         review:"Best rubber ever!"
-      },
-      {  
-         authorName:"John",
-         rating:5,
-         review:"Awesome rubber!"
-      }
-   ]
-})
+8. Start MongoDB Server
 
-db.products.updateOne(
-   {  
-      _id:1
-   },
-   {  
-      $set:{  
-         reviews:[  
-            {  
-               authorName:"Raj",
-               rating:4,
-               review:"Good one"
-            },
-            {  
-               authorName:"Yu",
-               rating:3,
-               review:"Not bad"
-            }
-         ]
-      }
-   })
+      mongod
+	       db ready and starts listening on port 27017
+
+9. Running Mongo Commands - Open new tab of terminal
+
+      mongo
+
+	       <This open mongo shell>
+         > help
+         > show dbs
+         > use shopDB
+         > db
+	           shopDB
+
+10. MongoDB CRUD Operations
+
+        db.products.insertOne({_id:1, name:"Pen", price:1.20})
+
+        show collections
+
+        db.products.find()
+
+        db.products.find({_id:1},{name:1})
+
+        db.products.find({_id:1},{name: 1, _id: 0})
+
+        db.products.updateOne({_id:1}, {$set:{stock:32}})
+
+        db.products.deleteOne({_id:2})
 
 
-MongoDB with Node.JS
-NativeDriver
-
-MongoDB driver > Node JS Driver > Quick Start
-
-cd Desktop/
-mkdir Fruits
-cd Fruits/
-touch app.js
-npm init -y   		<y flag to install npm with default setting - Yes to every thing>
-npm i mongodb
-Atom .
+11. MongoDB - Relationship
 
 
+        db.products.insert( {  
+          _id:3,
+          name:"Rubber",
+          price:1.30,
+          stock:43,
+          reviews:[  
+                    {  
+                      authorName:"Sally",
+                      rating:5,
+                      review:"Best rubber ever!"
+                    },
+                    {  
+                      authorName:"John",
+                      rating:5,
+                      review:"Awesome rubber!"
+                    }
+                    ]
+          })
+
+        db.products.updateOne(
+           {  
+              _id:1
+           },
+           {  
+              $set:{  
+                 reviews:[  
+                    {  
+                       authorName:"Raj",
+                       rating:4,
+                       review:"Good one"
+                    },
+                    {  
+                       authorName:"Yu",
+                       rating:3,
+                       review:"Not bad"
+                    }
+                 ]
+              }
+           })
+
+
+12. MongoDB with Node.JS - NativeDriver
+
+    MongoDB driver > Node JS Driver > Quick Start
+
+        cd Desktop/
+        mkdir Fruits
+        cd Fruits/
+        touch app.js
+        npm init -y   		
+          <y flag to install npm with default setting - Yes to every thing>
+        npm i mongodb
+        Atom .
+
+
+13. Quit MongoDB Seerver
+    Ctrl+C
+
+14. If failed to close before quiting instance of terminal. It will prevent you to start another MonogDB Server. So yo unee dto Kill existing server
 
 //Kill Old MongoDB install
-apples-Mac-mini-2:~ apple$ sudo lsof -iTCP -sTCP:LISTEN -n -P
-apples-Mac-mini-2:~ apple$ sudo kill <PID>
+      $ sudo lsof -iTCP -sTCP:LISTEN -n -P
+      $ sudo kill <PID>
+
+
+15. MONGOOSE
+
+    DELETE Old DB
+
+      > show dbs
+        ..
+        fruitsDB  0.000GB
+        ..
+      > use fruitsDB
+        switched to db fruitsDB
+      > db.dropDatabase()
+        { "dropped" : "fruitsDB", "ok" : 1 }
+      > show dbs
+        ...
+      > 
