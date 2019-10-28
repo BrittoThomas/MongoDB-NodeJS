@@ -153,17 +153,16 @@
 
     DELETE Old DB
 
-      > show dbs
-        ..
-        fruitsDB  0.000GB
-        ..
-      > use fruitsDB
-        switched to db fruitsDB
-      > db.dropDatabase()
-        { "dropped" : "fruitsDB", "ok" : 1 }
-      > show dbs
-        ...
-      >
+        show dbs
+          ..
+          fruitsDB  0.000GB
+          ..
+        use fruitsDB
+          switched to db fruitsDB
+        db.dropDatabase()
+          { "dropped" : "fruitsDB", "ok" : 1 }
+        show dbs
+          ...
 
 16. Data Validation in Mongoose - Validations need to be described in Schema
 
