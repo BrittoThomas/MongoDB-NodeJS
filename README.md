@@ -1,7 +1,7 @@
 # MongoDB With Node.JS
 
 
-#Installation & CLI
+# Installation & CLI
 
 1. install mongodb
 
@@ -66,7 +66,7 @@
          > db
 	           shopDB
 
-#CRUD & Relationships
+# CRUD & Relationships
 
 10. MongoDB CRUD Operations
 
@@ -129,7 +129,7 @@
            })
 
 
-#Native Mongo Node.JS Driver
+# Native Mongo Node.JS Driver
 
 12. MongoDB with Node.JS - NativeDriver
 
@@ -170,7 +170,7 @@
         show dbs
           ...
 
-#Mongoose Package
+# Mongoose Package
 16. Data Validation in Mongoose - Validations need to be described in Schema
 
     Example
