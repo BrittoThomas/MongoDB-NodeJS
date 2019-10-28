@@ -1,14 +1,16 @@
 const mongoose = require("mongoose");
 
+
 //Persion DB
 //---------------------------------------------------
-mongoose.connect("mongodb://localhost:27017/Peoples", {userNewUrlParser: true});
-const peopleSchema = new mongoose.Schema({
-  name: String,
-  age: Number
-});
-
-const People = mongoose.model("People", peopleSchema);
+// mongoose.connect("mongodb://localhost:27017/Peoples", {userNewUrlParser: true});
+// const peopleSchema = new mongoose.Schema({
+//   name: String,
+//   age: Number,
+//   favoriteFruit: fruitSchema
+// });
+//
+// const People = mongoose.model("People", peopleSchema);
 
 // const doctor = new People({
 //   name: "Dr. Abraham Jose",
@@ -18,24 +20,25 @@ const People = mongoose.model("People", peopleSchema);
 // doctor.save();
 
 
-//Fruits DB
-//---------------------------------------------------
-// mongoose.connect("mongodb://localhost:27017/fruitsDB", {useNewUrlParser: true});
-//
-// const fruitSchema = new mongoose.Schema({
-//   name: {
-//     type: String,
-//     required: true
-//   },
-//   rating: {
-//     type: Number,
-//     min: 0,
-//     max: 10
-//   },
-//   review: String
-// });
-//
-// const Fruit = mongoose.model("Fruit", fruitSchema);
+
+// Fruits DB
+// ---------------------------------------------------
+mongoose.connect("mongodb://localhost:27017/fruitsDB", {useNewUrlParser: true});
+
+const fruitSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true
+  },
+  rating: {
+    type: Number,
+    min: 0,
+    max: 10
+  },
+  review: String
+});
+
+const Fruit = mongoose.model("Fruit", fruitSchema);
 
 // Insert One
 //---------------------------------------------------
@@ -130,17 +133,42 @@ const People = mongoose.model("People", peopleSchema);
 //   mongoose.connection.close();
 // });
 
-
-
-
 //Delete Many Data - Duplicated records in People with name ""
 //---------------------------------------------------
 
-People.deleteMany({name:"Dr. Abraham Jose"}, function(err){
-  if (err) {
-    console.log(err);
-  }else{
-    console.log("Succcessfully deleted all record with name Dr. Abraham Jose.");
-  }
-  mongoose.connection.close();
+// People.deleteMany({name:"Dr. Abraham Jose"}, function(err){
+//   if (err) {
+//     console.log(err);
+//   }else{
+//     console.log("Succcessfully deleted all record with name Dr. Abraham Jose.");
+//   }
+//   mongoose.connection.close();
+// });
+
+
+//Relationship
+//---------------------------------------------------
+
+
+const peopleSchema = new mongoose.Schema({
+  name: String,
+  age: Number,
+  favoriteFruit: fruitSchema
 });
+
+const People = mongoose.model("People", peopleSchema);
+
+const lemon = new Fruit({
+  name: "Lemon",
+  rating: 4,
+  review: "Very Sour"
+});
+lemon.save();
+
+const tom = new People({
+  name: "Tom",
+  age: "35",
+  favoriteFruit: lemon
+});
+
+tom.save();
