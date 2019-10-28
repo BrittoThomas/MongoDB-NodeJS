@@ -143,9 +143,10 @@
 
 14. If failed to close before quiting instance of terminal. It will prevent you to start another MonogDB Server. So yo unee dto Kill existing server
 
-//Kill Old MongoDB install
-      $ sudo lsof -iTCP -sTCP:LISTEN -n -P
-      $ sudo kill <PID>
+    //Kill Old MongoDB install
+
+        sudo lsof -iTCP -sTCP:LISTEN -n -P
+        sudo kill <PID>
 
 
 15. MONGOOSE
