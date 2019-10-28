@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 
+//Persion DB
+//---------------------------------------------------
 //mongoose.connect("mongodb://localhost:27017/Peoples", {userNewUrlParser: true});
 // const peopleSchema = new mongoose.Schema({
 //   name: String,
@@ -17,6 +19,7 @@ const mongoose = require("mongoose");
 
 
 //Fruits DB
+//---------------------------------------------------
 mongoose.connect("mongodb://localhost:27017/fruitsDB", {useNewUrlParser: true});
 
 const fruitSchema = new mongoose.Schema({
@@ -34,40 +37,48 @@ const fruitSchema = new mongoose.Schema({
 
 const Fruit = mongoose.model("Fruit", fruitSchema);
 
-const orange = new Fruit({
-  name: "Orange",
-  rating: 9,
-  review: "Sour!"
-});
-
-//orange.save()
-
-const apple = new Fruit({
-  name: "Apple",
-  rating: 7,
-  review: "Pretty Solid as fruit."
-});
+// Insert One
+//---------------------------------------------------
+// const apple = new Fruit({
+//   name: "Apple",
+//   rating: 7,
+//   review: "Pretty Solid as fruit."
+// });
 
 //apple.save();
+//mongoose.connection.close();
 
+// Insert One with Validation
+//---------------------------------------------------
+// const orange = new Fruit({
+//   name: "Orange",
+//   rating: 9,
+//   review: "Sour!"
+// });
 
-const banana = new Fruit({
-  name: "Banana",
-  rating: 6,
-  review: "Healthy"
-});
+//orange.save()
+//mongoose.connection.close();
 
-const kiwi = new Fruit({
-  name: "Kiwi",
-  rating: 8,
-  review: "So Special."
-});
+//Insert Many
+//---------------------------------------------------
 
-const cherry = new Fruit({
-  name: "Cherry",
-  rating: 9,
-  review: "Sweet and delcious"
-});
+// const banana = new Fruit({
+//   name: "Banana",
+//   rating: 6,
+//   review: "Healthy"
+// });
+//
+// const kiwi = new Fruit({
+//   name: "Kiwi",
+//   rating: 8,
+//   review: "So Special."
+// });
+//
+// const cherry = new Fruit({
+//   name: "Cherry",
+//   rating: 9,
+//   review: "Sweet and delcious"
+// });
 
 // Fruit.insertMany([banana, kiwi, cherry], function(err){
 //   if (err) {
@@ -75,20 +86,48 @@ const cherry = new Fruit({
 //   } else {
 //     console.log("Successfully saved all the fruits of FruitsDB");;
 //   }
+//  mongoose.connection.close();
 // });
 
 
 
-//findDocuments
+//Find All Documents
+//---------------------------------------------------
 
-Fruit.find(function(err, fruits) {
-  mongoose.connection.close();
+// Fruit.find(function(err, fruits) {
+//   mongoose.connection.close();
+//   if (err) {
+//     console.log(err);
+//   } else {
+//     console.log(fruits);
+//     fruits.forEach(function(fruit){
+//       console.log(fruit.name);
+//     })
+//   }
+// });
+
+
+//Update Single Data - Cherry
+//---------------------------------------------------
+
+// Fruit.updateOne({_id:"5db5a04c93ebef3045124a4f"}, {rating:3}, function(err){
+//   if (err) {
+//     console.log(err);
+//   }else{
+//     console.log("Successfully updated the record.");
+//   }
+//   mongoose.connection.close();
+// });
+
+
+//Delete Single Data - Cherry
+//---------------------------------------------------
+
+Fruit.deleteOne({_id:"5db5a04c93ebef3045124a4f"}, function(err){
   if (err) {
     console.log(err);
-  } else {
-    console.log(fruits);
-    fruits.forEach(function(fruit){
-      console.log(fruit.name);
-    })
+  }else{
+    console.log("SucccessFully Deleted the record.");
   }
+  mongoose.connection.close();
 });

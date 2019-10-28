@@ -180,3 +180,26 @@
                         },
                 review: String
         });
+
+17. Update a Data
+    3 paramaters -
+
+    1. Condition
+    2. Update Parameter and Value
+    3. Callback
+
+      Example
+        Fruit.updateOne({_id:"5db5a04c93ebef3045124a4f"}, {rating:4}, function(err){
+          console.log("SucccessFully Updated the record.")
+        });
+
+18. Delete a Data
+    2 paramaters -
+
+    1. Condition
+    2. Callback
+
+        Example
+          Fruit.deleteOne({_id:"5db5a04c93ebef3045124a4f"}, function(err){
+            console.log("SucccessFully Deleted the record.")
+          });
