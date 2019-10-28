@@ -208,5 +208,24 @@
 
         Example
           Fruit.deleteOne({_id:"5db5a04c93ebef3045124a4f"}, function(err){
-            console.log("SucccessFully Deleted the record.")
+            if (err) {
+              console.log(err);
+            }else{
+              console.log("Succcessfully deleted the record.");
+            }
           });
+
+19. Delete Many Data
+    2 paramaters -
+
+    1. Condition
+    2. Callback
+
+          Example
+            Fruit.deleteMany({name:"Dr. Abraham Jose"}, function(err){
+              if (err) {
+                console.log(err);
+              }else{
+                console.log("Succcessfully deleted the all record with name Dr. Abraham Jose.");
+              }
+            });
