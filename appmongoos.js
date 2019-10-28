@@ -1,32 +1,46 @@
-
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb://localhost:27017/Peoples", {userNewUrlParser:true});
-const peopleSchema = new mongoose.Schema({
-  name:String,
-  age:Number
-});
+//mongoose.connect("mongodb://localhost:27017/Peoples", {userNewUrlParser: true});
+// const peopleSchema = new mongoose.Schema({
+//   name: String,
+//   age: Number
+// });
+//
+// const People = mongoose.model("People", peopleSchema);
+//
+// const doctor = new People({
+//   name: "Dr. Abraham Jose",
+//   age: "41"
+// });
 
-const People = mongoose.model("People",peopleSchema);
-
-const doctor = new People({
-  name:"Dr. Abraham Jose",
-  age:"41"
-});
-
-doctor.save();
+//doctor.save();
 
 
 //Fruits DB
-//mongoose.connect("mongodb://localhost:27017/fruitsDB", {useNewUrlParser: true});
+mongoose.connect("mongodb://localhost:27017/fruitsDB", {useNewUrlParser: true});
 
-const fruitSchema = new mongoose.Schema ({
-  name: String,
-  rating: Number,
+const fruitSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true
+  },
+  rating: {
+    type: Number,
+    min: 0,
+    max: 10
+  },
   review: String
 });
 
 const Fruit = mongoose.model("Fruit", fruitSchema);
+
+const orange = new Fruit({
+  name: "Orange",
+  rating: 9,
+  review: "Sour!"
+});
+
+//orange.save()
 
 const apple = new Fruit({
   name: "Apple",
@@ -34,7 +48,7 @@ const apple = new Fruit({
   review: "Pretty Solid as fruit."
 });
 
-//fruit.save();
+//apple.save();
 
 
 const banana = new Fruit({
@@ -62,3 +76,19 @@ const cherry = new Fruit({
 //     console.log("Successfully saved all the fruits of FruitsDB");;
 //   }
 // });
+
+
+
+//findDocuments
+
+Fruit.find(function(err, fruits) {
+  mongoose.connection.close();
+  if (err) {
+    console.log(err);
+  } else {
+    console.log(fruits);
+    fruits.forEach(function(fruit){
+      console.log(fruit.name);
+    })
+  }
+});

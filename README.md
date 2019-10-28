@@ -162,4 +162,21 @@
         { "dropped" : "fruitsDB", "ok" : 1 }
       > show dbs
         ...
-      > 
+      >
+
+16. Data Validation in Mongoose - Validations need to be described in Schema
+
+    Example
+
+        const fruitSchema = new mongoose.Schema({
+                name: {
+                        type: String,
+                        required: true
+                      },
+                rating: {
+                          type: Number,
+                          min: 0,
+                          max: 10
+                        },
+                review: String
+        });
