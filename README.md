@@ -1,4 +1,7 @@
-# MongoDB - Driver with Node.JS
+# MongoDB With Node.JS
+
+
+##Installation & CLI
 
 1. install mongodb
 
@@ -63,6 +66,8 @@
          > db
 	           shopDB
 
+##CRUD & Relationships
+
 10. MongoDB CRUD Operations
 
         db.products.insertOne({_id:1, name:"Pen", price:1.20})
@@ -124,6 +129,8 @@
            })
 
 
+##Native Mongo Node.JS Driver
+
 12. MongoDB with Node.JS - NativeDriver
 
     MongoDB driver > Node JS Driver > Quick Start
@@ -149,9 +156,8 @@
         sudo kill <PID>
 
 
-15. MONGOOSE
 
-    DELETE Old DB
+15. DELETE Old DB
 
         show dbs
           ..
@@ -164,6 +170,7 @@
         show dbs
           ...
 
+##Mongoose Package
 16. Data Validation in Mongoose - Validations need to be described in Schema
 
     Example
